@@ -6,7 +6,6 @@ import BookingItem from '../_components/booking-item'
 import { db } from '../_lib/prisma'
 import { Barbershop } from '@prisma/client'
 import BarbershopItem from './_components/barbershop-item'
-import Footer from '../_components/footer'
 
 export default async function Home() {
   const barbershops: Barbershop[] = await db.barbershop.findMany()
