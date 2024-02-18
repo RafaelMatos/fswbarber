@@ -95,7 +95,8 @@ async function seedDatabase() {
         name: 'Hidratação',
         description: 'Hidratação profunda para cabelo e barba.',
         price: 25.0,
-        imageUrl: 'Fios hidratados, macios e brilhantes.',
+        imageUrl:
+          'https://res.cloudinary.com/dkrhvi3kt/image/upload/v1708211760/mq1loy87r5ds70afaidd.svg',
       },
     ]
 
