@@ -2,29 +2,29 @@ import { db } from '@/app/_lib/prisma'
 import BarbershopInfo from './_components/barbershop-info'
 import ServiceItem from './_components/service-item'
 
-export interface IService {
-  id: string
-  name: string
-  price: number
-  description: string
-  barbershopId: string
-  imageUrl: string
-}
-export interface IBooking {
-  id: string
-  userId: string
-  serviceId: string
-  barbershopId: string
-  date: string
-}
-export interface IBarbershop {
-  id: string
-  name: string
-  address: string
-  imageUrl: string
-  services: IService[]
-  bookings: IBooking[]
-}
+// export interface IService {
+//   id: string
+//   name: string
+//   price: number
+//   description: string
+//   barbershopId: string
+//   imageUrl: string
+// }
+// export interface IBooking {
+//   id: string
+//   userId: string
+//   serviceId: string
+//   barbershopId: string
+//   date: string
+// }
+// export interface IBarbershop {
+//   id: string
+//   name: string
+//   address: string
+//   imageUrl: string
+//   services: IService[]
+//   bookings: IBooking[]
+// }
 
 interface BarbershopDetailsPageProps {
   params: {
@@ -39,7 +39,7 @@ const BarbershopDetailsPage = async ({
     // TODO redirecionar para homepage
     return null
   }
-  const barbershop: IBarbershop = await db.barbershop.findUnique({
+  const barbershop = await db.barbershop.findUnique({
     where: {
       id: params.id,
     },

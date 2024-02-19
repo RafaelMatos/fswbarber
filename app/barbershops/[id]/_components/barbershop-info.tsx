@@ -2,11 +2,11 @@
 import { Button } from '@/app/_components/ui/button'
 import { ChevronLeftIcon, MenuIcon, MapPinIcon, StarIcon } from 'lucide-react'
 import Image from 'next/image'
-import { IBarbershop } from '../page'
 import { useRouter } from 'next/navigation'
+import { Barbershop } from '@prisma/client'
 
 interface BarbershopInfoProps {
-  barbershop: IBarbershop
+  barbershop: Barbershop
 }
 
 const BarbershopInfo = ({ barbershop }: BarbershopInfoProps) => {

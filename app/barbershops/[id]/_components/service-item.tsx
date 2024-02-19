@@ -1,10 +1,10 @@
 import { Card, CardContent } from '@/app/_components/ui/card'
-import { IService } from '../page'
 import Image from 'next/image'
 import { Button } from '@/app/_components/ui/button'
+import { Service } from '@prisma/client'
 
 interface ServiceItemProps {
-  service: IService
+  service: Service
 }
 
 const ServiceItem = ({ service }: ServiceItemProps) => {
@@ -29,7 +29,7 @@ const ServiceItem = ({ service }: ServiceItemProps) => {
                 {Intl.NumberFormat('pt-BR', {
                   style: 'currency',
                   currency: 'BRL',
-                }).format(service.price)}
+                }).format(Number(service.price))}
               </p>
               <Button variant="secondary">Reservar</Button>
             </div>
