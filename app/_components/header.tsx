@@ -1,26 +1,9 @@
 'use client'
-import {
-  CalendarIcon,
-  HomeIcon,
-  LogInIcon,
-  LogOutIcon,
-  MenuIcon,
-} from 'lucide-react'
+import { MenuIcon } from 'lucide-react'
 import { Button } from './ui/button'
 import { Card, CardContent } from './ui/card'
 import Image from 'next/image'
-import { signIn, signOut, useSession } from 'next-auth/react'
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetHeader,
-  SheetTrigger,
-} from './ui/sheet'
-import { Avatar, AvatarImage } from './ui/avatar'
-import NoUserAvatar from './icons/no-user-avatar'
-import Fsw from './icons/fsw'
-import Link from 'next/link'
+import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
 import SideMenu from './ui/side-menu'
 const Header = () => {
   return (
@@ -29,7 +12,7 @@ const Header = () => {
         <Image src="/Logo.png" alt="FSW Barber" height={22} width={120} />
 
         <Sheet>
-          <SheetTrigger>
+          <SheetTrigger asChild>
             <Button variant="outline" size="icon" className="w-8 h-8">
               <MenuIcon size={16} />
             </Button>
