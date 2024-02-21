@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FSW Barber💈
 
-## Getting Started
+Plataforma destinado à barbearias, podendo oferecer seus serviços e realizar agendamentos para seus clientes. Aplicação full stack, utilizando o conceito de backend for frontend permitido pelo framework Next.js e na aplicação você já pode:
 
-First, run the development server:
+- Fazer login com conta Google ;
+- Fazer listagem de barbearias cadastradas;
+- Fazer listagem de serviços da barbearia selecionada;
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+<a href="https://fswbarber-rm.vercel.app/">Acesse a aplicação</a>
+
+
+
+<img src='https://res.cloudinary.com/dkrhvi3kt/image/upload/v1708521853/github/FSW%20Barber/Gif/jzdopjggkdauhvlvilpi.gif' alt='gif da tela da aplicação FSW Barber'>
+<!-- <img src='https://github.com/RafaelMatos/bookwise/raw/master/public/tela.gif' alt='gif da tela da aplicação FSW Barber'> -->
+
+<!-- <details>
+    <summary>Responsivo</summary>
+    <img src='./src/assets/responsive.png' alt='print da tela da aplicação Ignite Call'>
+</details> -->
+
+## Tecnologias usadas ⚙
+
+- Next.js
+- React.js
+- TailwindCSS
+- Typescript
+- Shadcn UI
+- Prisma
+- NextAuth.js
+- Lucide-react
+- Google Apis
+<!-- - DayJs -->
+<!-- - Zod -->
+<!-- - React Hook Form -->
+<!-- - Axios -->
+<!-- - Ignite-ui -->
+<!-- - Nookies -->
+
+## Atualizações 🔃
+
+  <!-- <details>
+    <summary>Histórico</summary>
+
+      - Adicionado a configuração pageExtensions do Next.js;
+
+    
+</details> -->
+
+  - Criada tela inicial;
+  - Criada tela de barbearia
+  - Criado menu lateral
+  - Menu lateral fazendo autenticação com Google
+
+
+  <!-- <img src='./src/assets/update.gif' alt='gif da tela da aplicação Ignite Call'> -->
+  
+  
+
+## Como utilizar
+
+- Clone o projeto do repositório
+
+```
+git clone https://github.com/RafaelMatos/fswbarber
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Acesse a pasta do projeto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+cd /fswbarber
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Instale as dependências
 
-## Learn More
+```
+npm install
+```
+- Criar arquivo .env com as chaves necessarias( seguir arquivo .envExample)
 
-To learn more about Next.js, take a look at the following resources:
+- Inicializa o Prisma( Usar banco de dados de sua preferencia, no exemplo é usado o postgresql)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+npx prisma init --datasource-provider postgresql
+```
+- Realiza as migrations do Prisma
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
+npx prisma migrate dev --name init
+```
 
-## Deploy on Vercel
+- Execute o projeto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Acesse no navegador o endereço indicado no terminal

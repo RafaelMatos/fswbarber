@@ -1,0 +1,10 @@
+
+DATABASE_DIRECT_URL="YourDatabaseDirectUrl"
+DATABASE_URL="YourDatabaseUrl"
+
+#GOOGLE OAUTH
+GOOGLE_CLIENT_ID="YourClientId"
+GOOGLE_CLIENT_SECRET="YourClientSecret"
+
+#NextAuth Secret
+NEXTAUTH_SECRET="YourNextauthSecret"
