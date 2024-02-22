@@ -4,11 +4,10 @@ import { ptBR } from 'date-fns/locale'
 import { Search } from './_components/search'
 import BookingItem from '../_components/booking-item'
 import { db } from '../_lib/prisma'
-import { Barbershop } from '@prisma/client'
 import BarbershopItem from './_components/barbershop-item'
 
 export default async function Home() {
-  const barbershops: Barbershop[] = await db.barbershop.findMany()
+  const barbershops = await db.barbershop.findMany()
   return (
     <div className=" mb-[4.5rem]">
       <Header />
