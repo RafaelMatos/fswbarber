@@ -11,14 +11,15 @@ import {
   SheetHeader,
   SheetTrigger,
 } from '@/app/_components/ui/sheet'
-import { useMemo, useState } from 'react'
+import { ReactNode, useMemo, useState } from 'react'
 import { Calendar } from '@/app/_components/ui/calendar'
 import { ptBR } from 'date-fns/locale'
 import { generateDayTimeList } from '../_helpers/hours'
 import { format, setHours, setMinutes } from 'date-fns'
 import { saveBooking } from '../_actions/save-booking'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import { Loader2 } from 'lucide-react'
+import { toast } from 'sonner'
+import { useRouter } from 'next/navigation'
 
 interface ServiceItemProps {
   service: Service
@@ -35,6 +36,9 @@ const ServiceItem = ({
   const [date, setDate] = useState<Date | undefined>(undefined)
   const [hour, setHour] = useState<string | undefined>()
   const [submitIsloading, setSubmitIsLoading] = useState(false)
+  const [sheetIsOpen, setSheetIsOpen] = useState(false)
+
+  const router = useRouter()
 
   const handleBookingClick = () => {
     if (!isAuthenticated) {
@@ -52,16 +56,43 @@ const ServiceItem = ({
 
       const dateHour = Number(hour.split(':')[0])
       const dateMinutes = Number(hour.split(':')[1])
-      let newDate = setHours(date, dateHour)
-      newDate = setMinutes(date, dateMinutes)
+      const newDate = setMinutes(setHours(date, dateHour), dateMinutes)
+
       await saveBooking({
         serviceId: service.id,
         barbershopId: barbershop.id,
         date: newDate,
         userId: (data.user as any).id,
       })
+
+      setSheetIsOpen(false)
+
+      setHour(undefined)
+      setDate(undefined)
+
+      const toastDateMessage = format(
+        newDate,
+        "'Para' dd 'de' MMMM 'às' HH':'mm'.'",
+        { locale: ptBR },
+      )
+      // console.log(toastDateMessage)
+      toast('Reserva realizada', {
+        description: toastDateMessage,
+        action: {
+          label: 'Visualizar',
+          onClick: () => router.push('/bookings'),
+        },
+      })
     } catch (error) {
       console.error(error)
+      toast('Oh não! Algo deu errado', {
+        type: 'warning',
+        description: 'Desculpa, não conseguimos fazer sua reserva',
+        // action: {
+        //   label: 'Visualizar',
+        //   onClick: () => router.push('/bookings'),
+        // },
+      })
     } finally {
       setSubmitIsLoading(false)
     }
@@ -102,7 +133,7 @@ const ServiceItem = ({
                   currency: 'BRL',
                 }).format(Number(service.price))}
               </p>
-              <Sheet>
+              <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen}>
                 {isAuthenticated ? (
                   <SheetTrigger asChild>
                     <Button variant="secondary" disabled={!isAuthenticated}>
