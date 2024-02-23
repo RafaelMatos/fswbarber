@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { Barbershop } from '@prisma/client'
 import { SheetTrigger, SheetContent, Sheet } from '@/app/_components/ui/sheet'
 import SideMenu from '@/app/_components/ui/side-menu'
+import { useState } from 'react'
 
 interface BarbershopInfoProps {
   barbershop: Barbershop
@@ -13,6 +14,24 @@ interface BarbershopInfoProps {
 
 const BarbershopInfo = ({ barbershop }: BarbershopInfoProps) => {
   const router = useRouter()
+
+  const [hoveredAddress, setHoveredAddress] = useState(false)
+  const [hoveredRating, setHoveredRating] = useState(false)
+
+  const handleMouseEnterAddress = () => {
+    setHoveredAddress(true)
+  }
+
+  const handleMouseLeaveAddress = () => {
+    setHoveredAddress(false)
+  }
+  const handleMouseEnterRating = () => {
+    setHoveredRating(true)
+  }
+
+  const handleMouseLeaveRating = () => {
+    setHoveredRating(false)
+  }
 
   const handleBackClick = () => {
     router.replace('/')
@@ -55,12 +74,26 @@ const BarbershopInfo = ({ barbershop }: BarbershopInfoProps) => {
       </div>
       <div className="px-5 pt-3 pb-6 border-b border-solid border-secondary">
         <h1 className="text-xl font-bold">{barbershop.name}</h1>
-        <div className="flex item-center gap-2 mt-2">
-          <MapPinIcon className="text-primary" size={18} />
+        <div
+          className="flex item-center gap-2 mt-2 w-fit"
+          onMouseEnter={handleMouseEnterAddress}
+          onMouseLeave={handleMouseLeaveAddress}
+        >
+          <MapPinIcon
+            className={`${hoveredAddress ? 'text-primary animate-bounce' : 'text-primary'}`}
+            size={18}
+          />
           <p className="text-sm">{barbershop.address}</p>
         </div>
-        <div className="flex item-center gap-2 mt-2">
-          <StarIcon className="fill-primary text-primary" size={18} />
+        <div
+          className="flex item-center gap-2 mt-2 w-fit"
+          onMouseEnter={handleMouseEnterRating}
+          onMouseLeave={handleMouseLeaveRating}
+        >
+          <StarIcon
+            className={`fill-primary ${hoveredRating ? 'text-primary animate-pulse' : 'text-primary'}`}
+            size={18}
+          />
           <p className="text-sm">5,0 (89 Avaliações)</p>
         </div>
       </div>
