@@ -5,11 +5,14 @@ import { Card, CardContent } from './ui/card'
 import Image from 'next/image'
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
 import SideMenu from './ui/side-menu'
+import Link from 'next/link'
 const Header = () => {
   return (
     <Card>
       <CardContent className="p-5 flex flex-row justify-between items-center">
-        <Image src="/Logo.png" alt="FSW Barber" height={22} width={120} />
+        <Link href="/">
+          <Image src="/Logo.png" alt="FSW Barber" height={22} width={120} />
+        </Link>
 
         <Sheet>
           <SheetTrigger asChild>
