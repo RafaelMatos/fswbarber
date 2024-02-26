@@ -17,18 +17,39 @@ const BookingsPage = async () => {
     return redirect('/')
   }
 
-  const bookings = await db.booking.findMany({
-    where: {
-      userId: (session.user as User).id,
-    },
-    include: {
-      service: true,
-      barbershop: true,
-    },
-  })
+  const [confirmedBookings, finishedBookings] = await Promise.all([
+    db.booking.findMany({
+      where: {
+        userId: (session.user as User).id,
+        date: {
+          gte: new Date(),
+        },
+      },
+      include: {
+        service: true,
+        barbershop: true,
+      },
+      orderBy: {
+        date: 'asc',
+      },
+    }),
+    db.booking.findMany({
+      where: {
+        userId: (session.user as User).id,
+        date: {
+          lt: new Date(),
+        },
+      },
+      include: {
+        service: true,
+        barbershop: true,
+      },
+      orderBy: {
+        date: 'asc',
+      },
+    }),
+  ])
 
-  const confirmedBookings = bookings.filter((booking) => isFuture(booking.date))
-  const finishedBookings = bookings.filter((booking) => isPast(booking.date))
   return (
     <>
       <Header />
