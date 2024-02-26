@@ -103,7 +103,6 @@ const ServiceItem = ({
     } catch (error) {
       console.error(error)
       toast('Oh não! Algo deu errado', {
-        type: 'warning',
         description: 'Desculpa, não conseguimos fazer sua reserva',
         // action: {
         //   label: 'Visualizar',
