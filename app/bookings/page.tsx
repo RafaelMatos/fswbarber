@@ -1,12 +1,14 @@
 import { getServerSession } from 'next-auth'
 import Header from '../_components/header'
-import { authOptions } from '../api/auth/[...nextauth]/route'
+// import { authOptions } from '../api/auth/[...nextauth]/route'
+
 import { signIn } from 'next-auth/react'
 import { redirect } from 'next/navigation'
 import { User } from '@prisma/client'
 import { db } from '../_lib/prisma'
 import BookingItem from '../_components/booking-item'
 import { isFuture, isPast } from 'date-fns'
+import { authOptions } from '../_lib/authOptions'
 
 const BookingsPage = async () => {
   // recuperar a sessão de usuário (ver se ele está logado ou não)

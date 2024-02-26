@@ -1,4 +1,4 @@
-import { format, isFuture } from 'date-fns'
+import { format } from 'date-fns'
 import Header from '../_components/header'
 import { ptBR } from 'date-fns/locale'
 import { Search } from './_components/search'
@@ -6,8 +6,9 @@ import BookingItem from '../_components/booking-item'
 import { db } from '../_lib/prisma'
 import BarbershopItem from './_components/barbershop-item'
 import { User, getServerSession } from 'next-auth'
-import { authOptions } from '../api/auth/[...nextauth]/route'
+// import { authOptions } from '../api/auth/[...nextauth]/route'
 import Link from 'next/link'
+import { authOptions } from '../_lib/authOptions'
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
