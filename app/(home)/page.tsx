@@ -6,7 +6,6 @@ import BookingItem from '../_components/booking-item'
 import { db } from '../_lib/prisma'
 import BarbershopItem from './_components/barbershop-item'
 import { User, getServerSession } from 'next-auth'
-// import { authOptions } from '../api/auth/[...nextauth]/route'
 import Link from 'next/link'
 import { authOptions } from '../_lib/authOptions'
 
@@ -33,26 +32,6 @@ export default async function Home() {
         })
       : Promise.resolve([]),
   ])
-  // const barbershops = await db.barbershop.findMany()
-
-  // const confirmedBookings = session?.user
-  //   ? await db.booking.findMany({
-  //       where: {
-  //         userId: (session.user as User).id,
-  //         date: {
-  //           gte: new Date(),
-  //         },
-  //       },
-  //       orderBy: {
-  //         date: 'asc',
-  //       },
-  //       include: {
-  //         service: true,
-  //         barbershop: true,
-  //       },
-  //     })
-  //   : []
-  // const confirmedBookings = bookings.filter((booking) => isFuture(booking.date))
   return (
     <div className=" mb-[4.5rem]">
       <Header />
