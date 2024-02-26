@@ -30,7 +30,7 @@ Plataforma destinado à barbearias, podendo oferecer seus serviços e realizar a
 - NextAuth.js
 - Lucide-react
 - Google Apis
-<!-- - DayJs -->
+- Date-fns
 <!-- - Zod -->
 <!-- - React Hook Form -->
 <!-- - Axios -->
@@ -51,6 +51,7 @@ Plataforma destinado à barbearias, podendo oferecer seus serviços e realizar a
   - Criada tela de barbearia
   - Criado menu lateral
   - Menu lateral fazendo autenticação com Google
+  - Adicionada página de agendamentos
 
 
   <!-- <img src='./src/assets/update.gif' alt='gif da tela da aplicação Ignite Call'> -->
