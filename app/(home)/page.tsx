@@ -36,7 +36,7 @@ export default async function Home() {
     <div className=" mb-[4.5rem]">
       <Header />
       <div className="px-5 pt-5">
-        <h2 className="text-xl  font-bold">Olá,Rafael!</h2>
+        <h2 className="text-xl  font-bold">{`Olá, ${session?.user ? session.user.name : 'meu consagrado'}`}</h2>
         <p className="capitalize text-sm">
           {format(new Date(), "EEEE',' dd 'de' MMMM", { locale: ptBR })}
         </p>
@@ -50,15 +50,28 @@ export default async function Home() {
           Agendamentos
         </h2>
         <div className="px-5 flex gap-3 overflow-x-auto items-center">
-          {confirmedBookings.map((booking) => {
-            return <BookingItem key={booking.id} booking={booking} />
-          })}
-          <Link
-            className="text-primary/80 hover:text-primary transition ease-in-out min-w-[12rem]"
-            href="/bookings"
-          >
-            ...outros agendamentos
-          </Link>
+          {session?.user ? (
+            <>
+              {confirmedBookings.map((booking) => {
+                return <BookingItem key={booking.id} booking={booking} />
+              })}
+
+              {confirmedBookings.length > 0 ? (
+                <Link
+                  className="text-primary/80 hover:text-primary transition ease-in-out min-w-[12rem]"
+                  href="/bookings"
+                >
+                  ...outros agendamentos
+                </Link>
+              ) : (
+                <p className="text-gray-500 text-sm">
+                  Opa, parece que você ainda não tem nenhum agendamento...
+                </p>
+              )}
+            </>
+          ) : (
+            <p className="text-gray-500 text-sm">Necessário realizar o login</p>
+          )}
         </div>
       </div>
 
