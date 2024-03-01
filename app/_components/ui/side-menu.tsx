@@ -8,6 +8,7 @@ import { SheetHeader } from './sheet'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import { Avatar, AvatarImage } from './avatar'
 import Link from 'next/link'
+import FswSheetHeader from './fsw-sheet-header'
 
 const SideMenu = () => {
   const { data } = useSession()
@@ -20,10 +21,8 @@ const SideMenu = () => {
   }
 
   return (
-    <>
-      <SheetHeader className="text-left border-b border-solid border-secondary p-5">
-        <Fsw />
-      </SheetHeader>
+    <div>
+      <FswSheetHeader title="Menu" />
 
       {data?.user ? (
         <div className="flex justify-between items-center  px-5 py-6">
@@ -81,7 +80,7 @@ const SideMenu = () => {
           </Button>
         )}
       </div>
-    </>
+    </div>
   )
 }
 

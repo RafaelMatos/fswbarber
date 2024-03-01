@@ -21,6 +21,7 @@ import { Loader2 } from 'lucide-react'
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
 import { getDayBookings } from '../_actions/get-day-bookings'
+import FswSheetHeader from '@/app/_components/ui/fsw-sheet-header'
 
 interface ServiceItemProps {
   service: Service
@@ -182,9 +183,7 @@ const ServiceItem = ({
                 )}
 
                 <SheetContent className="p-0 w-full overflow-y-scroll">
-                  <SheetHeader className="text-left px-5 py-6 border-b border-solid border-secondary">
-                    Fazer reserva
-                  </SheetHeader>
+                  <FswSheetHeader title="Fazer reserva" />
 
                   <div className="py-6">
                     <Calendar
