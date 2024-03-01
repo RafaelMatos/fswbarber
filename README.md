@@ -51,7 +51,13 @@ Plataforma destinado à barbearias, podendo oferecer seus serviços e realizar a
   - Criada tela de barbearia
   - Criado menu lateral
   - Menu lateral fazendo autenticação com Google
+  - Adicionada funcionalidade de agendamentos
   - Adicionada página de agendamentos
+  - <details>
+    <summary>Adicionada funcionalidade de cancelamento de agendamento</summary>
+    <img src='https://github.com/RafaelMatos/projectsImages/blob/master/FSWBarber/printscreens/update-cancel-booking.gif?raw=true' alt='gif de atualização da aplicação FSW Barber'>
+    </details>
+
 
 
   <!-- <img src='./src/assets/update.gif' alt='gif da tela da aplicação Ignite Call'> -->
