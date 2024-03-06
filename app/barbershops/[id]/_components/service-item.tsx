@@ -15,7 +15,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Calendar } from '@/app/_components/ui/calendar'
 import { ptBR } from 'date-fns/locale'
 import { generateDayTimeList } from '../_helpers/hours'
-import { format, setHours, setMinutes } from 'date-fns'
+import { addDays, format, setHours, setMinutes } from 'date-fns'
 import { saveBooking } from '../_actions/save-booking'
 import { Loader2 } from 'lucide-react'
 import { toast } from 'sonner'
@@ -191,7 +191,7 @@ const ServiceItem = ({
                       selected={date}
                       onSelect={handleDateClick}
                       className="mt-6 rounded-md"
-                      fromDate={new Date()}
+                      fromDate={addDays(new Date(), 1)}
                       locale={ptBR}
                       styles={{
                         head_cell: {
